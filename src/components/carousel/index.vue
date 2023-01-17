@@ -105,27 +105,13 @@ export default {
       width: 30px;
       height: 30px;
     }
-    .swiper-button-next:after {
-      content: ' ';
-      background-image: url(./image/arrow-right.svg);
-      background-repeat: no-repeat;
-      background-size: 100%;
-      width: 100%;
-      height: 100%;
-    }
+ 
     .swiper-button-prev {
       left: 16%;
       width: 30px;
       height: 30px;
     }
-    .swiper-button-prev:after {
-      content: ' ';
-      background-image: url(./image/arrow-left.svg);
-      background-repeat: no-repeat;
-      background-size: 100%;
-      width: 100%;
-      height: 100%;
-    }
+    
     .swiper-container-horizontal>.swiper-pagination-bullets {
       bottom: 0;
     }
