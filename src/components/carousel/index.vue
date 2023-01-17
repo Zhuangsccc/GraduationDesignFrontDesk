@@ -1,18 +1,23 @@
 <template>
-   <div class="out-box">
-     <el-card class="center-box">
-        <div class="carousel-box">
-            <el-carousel :interval="4000" type="card"  height="400px">
-                <el-carousel-item v-for="item in image_list" :key="item">
-                    <el-image style="width:100%; height:100% " :src="item" fit="fit"></el-image>
-                </el-carousel-item>
-            </el-carousel>
+   <div class="swiper-box">
+  <div class="swiper-content">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item) in image_list" :key="item" >
+          <img :src="item" alt="" srcset="">
         </div>
-    </el-card>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper外面，需要自定义样式。-->
+      <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper外面，需要自定义样式。-->
+    </div>
    </div>
+</div>
 </template>
 
 <script>
+import Swiper from "swiper"
 export default {
     data() {
         var img1 = require("@/assets/Ptu/莆田学院1.jpg");
@@ -24,15 +29,41 @@ export default {
         return{
             image_list: [img1, img2, img3, img4,img5,img6],
         }
+    },
+    mounted(){
+         var swiper = new Swiper('.swiper-container', {
+      autoplay: false,
+      loop: true,
+      initialSlide: 2,
+      spaceBetween: 20,
+      centeredSlides : true,
+      slidesPerView : 1.9,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      
+    });
     }
 }
 </script>
 
 <style scoped>
+.swiper-box{
+    margin-top: 10px;
+}
 .center-box {
    width: 100%;
    display: flex;
-   justify-content: center;
 }
 .out-box{
   width: 100%;
@@ -40,6 +71,65 @@ export default {
   justify-content: center;
 }
 .carousel-box{
-    width:1600px;
+    width:1200px;
 }
+.swiper-container {
+      width: 100%;
+      height: 100%;
+      max-width: 1800px;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 400px;
+      max-width: 1600px;
+    }
+    .swiper-button-next {
+      right: 16%;
+      width: 30px;
+      height: 30px;
+    }
+    .swiper-button-next:after {
+      content: ' ';
+      background-image: url(./image/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-button-prev {
+      left: 16%;
+      width: 30px;
+      height: 30px;
+    }
+    .swiper-button-prev:after {
+      content: ' ';
+      background-image: url(./image/arrow-left.svg);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets {
+      bottom: 0;
+    }
+    .swiper-pagination {
+      position: relative;
+    }
 </style>
