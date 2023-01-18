@@ -1,7 +1,7 @@
 <template>
   <el-card
     style="
-      width: 100px;
+      width: 80px;
       justify-content: center;
       align-items: center;
       background-color: #3490de;
@@ -57,8 +57,8 @@ export default {
 
 <style>
 .img-style {
-  width: 60px;
-  height: 50px;
+  width: 42px;
+  height: 30px;
 }
 .nav-block {
   display: flex;
@@ -89,7 +89,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 10px;
   color: #ffffff;
 }
 </style>

@@ -1,17 +1,6 @@
 <template>
   <div class="nav-box">
     <div style="display: flex; justify-content: center">
-      <!-- <el-row style="width: 1200px; margin-left: 100px">
-        <el-col :span="3" v-for="item in navList" :key="item.title">
-          <navigationBlock
-            :myImg="item.img"
-            :title="item.title"
-            :path="item.path"
-            :isPath="item.isPath?item.isPath:false"
-          >
-          </navigationBlock>
-        </el-col>
-      </el-row> -->
       <div class="nav-list-box">
         <div v-for="item in navList" :key="item.title">
           <navigationBlock
@@ -102,6 +91,6 @@ export default {
 .nav-list-box {
   display: flex;
   justify-content: space-between;
-  width: 1100px;
+  width: 1000px;
 }
 </style>

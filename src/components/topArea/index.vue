@@ -2,6 +2,7 @@
     <div class="top-box">
         <div class="center-box"><img src="@/assets/ptuLogo/logo.png" class="logo-image">
             <div class="user-box">
+                <img src="@/assets/ptuLogo/校训.png" alt="">
                 <el-dropdown>
                     <el-avatar :size="50" :src="image1"> </el-avatar>
                     <span class="el-dropdown-link">
@@ -75,5 +76,9 @@ export default {
 
 .el-icon-arrow-down {
     font-size: 12px;
+}
+.user-box img{
+    height: 25px;
+    margin-right: 15px;
 }
 </style>

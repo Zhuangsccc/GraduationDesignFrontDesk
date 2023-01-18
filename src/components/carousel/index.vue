@@ -8,7 +8,7 @@
           </div>
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        <div class="swiper-scrollbar"></div>
         <div class="swiper-button-prev"></div>
         <!--左箭头。如果放置在swiper外面，需要自定义样式。-->
         <div class="swiper-button-next"></div>
@@ -41,17 +41,15 @@ export default {
     },
       loop: true,
       initialSlide: 2,
-      spaceBetween: 20,
+      spaceBetween: 0,
       centeredSlides: true,
       slidesPerView: 2,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+      
       // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-      },
+     
+      scrollbar: {
+    el: '.swiper-scrollbar',
+  },
       // 如果需要前进后退按钮
       navigation: {
         nextEl: ".swiper-button-next",
@@ -104,7 +102,6 @@ export default {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  border-radius: 20px;
 }
 .swiper-button-next {
   right: 16%;
