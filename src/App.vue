@@ -9,7 +9,17 @@
 import topArea from "@/components/topArea"
 export default {
   name: 'App',
-  components:{topArea}
+  components:{topArea},
+   data() {
+      return {
+        activeNames: ['1']
+      };
+    },
+    methods: {
+      handleChange(val) {
+        console.log(val);
+      }
+    }
 }
 </script>
 
