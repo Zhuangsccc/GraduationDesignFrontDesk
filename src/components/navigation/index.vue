@@ -43,6 +43,7 @@ export default {
         {
           img: img3,
           title: "成绩",
+          path:"/scoreQuery"
         },
         {
           img: img4,

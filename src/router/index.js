@@ -15,6 +15,12 @@ export const constantRoutes = [
     meta:{show:true}
   },
   {
+    path: "/scoreQuery",
+    component: () => import("@/views/scoreQuery"),
+    name: "scoreQuery",
+    meta:{show:true}
+  },
+  {
     path:"/login",
     component:()=>import("@/views/login"),
     meta:{show:false}

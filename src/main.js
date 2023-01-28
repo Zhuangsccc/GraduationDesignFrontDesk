@@ -10,7 +10,8 @@ import store from './store'
 import '@/icons'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-
+import FilterBar from "@/components/FilterBar"
+Vue.component(FilterBar.name,FilterBar)
 new Vue({
   render: h => h(App),
   router,
