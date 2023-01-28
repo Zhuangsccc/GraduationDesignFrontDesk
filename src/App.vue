@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <topArea></topArea>
+    <topArea v-show="this.$route.meta.show"></topArea>
     <router-view></router-view>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       handleChange(val) {
         console.log(val);
       }
-    }
+    },
 }
 </script>
 

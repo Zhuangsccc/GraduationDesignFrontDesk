@@ -5,13 +5,20 @@ export const constantRoutes = [
   {
     path: "/",
     component: () => import("@/views/homepage"),
-    name: "homePage"
+    name: "homePage",
+    meta:{show:true}
   },
   {
     path: "/personalInformation",
     component: () => import("@/views/personalInformation"),
-    name: "personalInformation"
+    name: "personalInformation",
+    meta:{show:true}
   },
+  {
+    path:"/login",
+    component:()=>import("@/views/login"),
+    meta:{show:false}
+  }
 ]
 Vue.use(Router)
 const createRouter = () => new Router({

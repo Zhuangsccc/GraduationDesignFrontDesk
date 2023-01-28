@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'vue_admin_template_token'
-const NameKey="vue_name"
+const TokenKey = 'reception_token'
+const NameKey="reception_name"
 export function getToken() {
   return Cookies.get(TokenKey)
 }

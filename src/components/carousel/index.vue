@@ -4,7 +4,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="item in image_list" :key="item">
-            <img :src="item" alt="" srcset=""   />
+            <img :src="item" alt="" srcset="" />
           </div>
         </div>
         <!-- Add Pagination -->
@@ -33,23 +33,22 @@ export default {
     };
   },
   mounted() {
-   new Swiper(".swiper-container", {
+    new Swiper(".swiper-container", {
       autoplay: {
-    delay: 3000,
-    stopOnLastSlide: false,
-    disableOnInteraction: true,
-    },
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+      },
       loop: true,
       initialSlide: 2,
       spaceBetween: 0,
       centeredSlides: true,
       slidesPerView: 2,
-      
       // 如果需要分页器
-     
       scrollbar: {
-    el: '.swiper-scrollbar',
-  },
+        el: ".swiper-scrollbar",
+         draggable: true,
+      },
       // 如果需要前进后退按钮
       navigation: {
         nextEl: ".swiper-button-next",
@@ -62,7 +61,7 @@ export default {
 
 <style scoped>
 .swiper-box {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .center-box {
   width: 100%;
