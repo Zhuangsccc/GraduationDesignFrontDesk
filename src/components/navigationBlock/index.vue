@@ -1,12 +1,26 @@
 <template>
-  <el-card style=" width: 80px; justify-content: center; align-items: center; background-color: #3490de; border-radius: 18px; margin-top: 20px; " @click="toRouter" >
+  <el-card
+    style="
+      width: 80px;
+      justify-content: center;
+      align-items: center;
+      background-color: #3490de;
+      border-radius: 18px;
+      margin-top: 20px;
+    "
+    @click="toRouter"
+  >
     <router-link :to="path" style="text-decoration-line: none" v-if="!isPath">
-      <div class="nav-block">
+      <div class="nav-block" @click="navClick">
         <img class="img-style" :src="myImg" />
         <span class="title iconfont">{{ title }}</span>
       </div>
     </router-link>
-    <a href="http://localhost:9528/#/mydashboard" style="text-decoration-line: none" v-else>
+    <a
+      href="http://localhost:9528/#/mydashboard"
+      style="text-decoration-line: none"
+      v-else
+    >
       <div class="nav-block">
         <img class="img-style" :src="myImg" />
         <span class="title iconfont">{{ title }}</span>
@@ -40,6 +54,16 @@ export default {
       this.$router.push({
         path: this.path,
       });
+    },
+    async navClick() {
+      if (this.title == "退出") {
+        await this.$store.dispatch("user/logout");
+        this.$router.push(`/login?redirect=${this.$route.fullPath}`);
+        this.$message({
+          message: '注销成功',
+          type: 'warning'
+        });
+      }
     },
   },
 };

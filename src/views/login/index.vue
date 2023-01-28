@@ -141,7 +141,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import { regUser, } from "@/api/user";
+import { regUser } from "@/api/user";
 export default {
   name: "StudentPerformance",
   data() {
@@ -224,6 +224,10 @@ export default {
             .dispatch("user/login", this.loginForm)
             .then(() => {
               this.$router.push({ path: "/" });
+              this.$message({
+                message: "登陆成功！！",
+                type: "success",
+              });
               this.loading = false;
             })
             .catch(() => {
