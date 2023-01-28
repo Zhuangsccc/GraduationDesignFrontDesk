@@ -126,6 +126,17 @@
             >
             <!-- el-icon-view -->
           </el-form-item>
+          <el-form-item style="margin-top:20px" prop="stu">
+            <el-input
+              ref="username"
+              v-model="registerForm.stu"
+              placeholder="请输入学生名"
+              type="text"
+              tabindex="1"
+              auto-complete="on"
+              prefix-icon="el-icon-user"
+            />
+          </el-form-item>
           <el-button
             :loading="loading"
             type="primary"
@@ -167,6 +178,7 @@ export default {
       registerForm: {
         username: "",
         password: "",
+        stu:""
       },
       loginRules: {
         username: [
@@ -175,6 +187,9 @@ export default {
         password: [
           { required: true, trigger: "blur", validator: validatePassword },
         ],
+        stu:[
+          { required: true, trigger: "blur",message:"请输入学生名"},
+        ]
       },
       loading: false,
       passwordType: "password",
@@ -250,6 +265,7 @@ export default {
               this.loginForm = {
                 username: "",
                 password: "",
+                stu:""
               };
               this.$message({
                 message: "注册成功！",

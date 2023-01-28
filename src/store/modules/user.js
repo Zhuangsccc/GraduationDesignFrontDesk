@@ -1,10 +1,11 @@
-import { getToken, setToken, removeToken, getName, removeName } from '@/utils/auth'
+import { getToken, setToken, removeToken, getName, removeName,setStu,getStu,removeStu } from '@/utils/auth'
 import { login } from "@/api/user"
 import { resetRouter } from '@/router'
 const getDefaultState = () => {
   return {
     token: getToken(),
     name: getName(),
+    stu:getStu()
   }
 }
 
@@ -19,6 +20,9 @@ const mutations = {
   SET_NAME: (state, name) => {
     state.name = name
   },
+  SET_STU:(state,stu)=>{
+    state.stu = stu
+  }
 }
 const actions = {
   async login({ commit }, userInfo) {
@@ -27,12 +31,16 @@ const actions = {
     if (res.code == 200) {
       commit('SET_TOKEN', res.token)
       commit('SET_NAME', username)
+      commit("SET_STU",res.stuName)
       setToken(res.token)
+      setStu(res.stuName)
     }
   },
   // user logout
   logout({ commit, state }) {
     removeToken() // must remove  token  first
+    removeName()
+    removeStu()
     resetRouter()
     commit('RESET_STATE')
   },

@@ -13,3 +13,10 @@ export function login(data){
         data,
     })
 }
+export function getStuInfo(data){
+    return request({
+        url:"/stuAdmin/getStuInfo",
+        method:"post",
+        data
+    })
+}

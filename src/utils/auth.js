@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 
 const TokenKey = 'reception_token'
 const NameKey="reception_name"
+const StuKey = "reception_StuKey"
 export function getToken() {
   return Cookies.get(TokenKey)
 }
@@ -21,4 +22,13 @@ export function getName(){
 }
 export function removeName(){
   return Cookies.remove(NameKey)
+}
+export function setStu(stu){
+  return Cookies.set(StuKey,stu)
+}
+export function getStu(){
+  return Cookies.get(StuKey)
+}
+export function removeStu(){
+  return Cookies.remove(StuKey)
 }
