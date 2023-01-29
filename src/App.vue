@@ -1,6 +1,17 @@
 <template>
   <div id="app">
     <topArea v-show="this.$route.meta.show"></topArea>
+    <div class="out-menu-style" >
+      <el-menu router v-show="this.$route.meta.menu" :default-active="activeIndex"  class="el-menu-demo menu-style" mode="horizontal">
+    <el-menu-item index="/">首页</el-menu-item>
+    <el-menu-item index="personalInformation">
+      个人信息
+    </el-menu-item>
+    <el-menu-item index="scoreQuery" >成绩查询</el-menu-item>
+    <el-menu-item index="messageBoard">留言板</el-menu-item>
+    <el-menu-item index="affair">事务</el-menu-item>
+  </el-menu>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -12,14 +23,23 @@ export default {
   components:{topArea},
    data() {
       return {
-        activeNames: ['1']
+        activeIndex:"personalInformation"
       };
     },
     methods: {
       handleChange(val) {
         console.log(val);
-      }
+      },
     },
+    watch:{
+      "$route.name":{
+        handler(newValue){
+          this.$nextTick(()=>{
+            this.activeIndex=newValue
+          })
+        }
+      }
+    }
 }
 </script>
 
@@ -31,5 +51,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.menu-style{
+  width: 1200px;
+}
+.out-menu-style{
+  display: flex;
+  justify-content: center;
 }
 </style>
