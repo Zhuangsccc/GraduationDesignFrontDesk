@@ -12,7 +12,20 @@ export const constantRoutes = [
     path: "/personalInformation",
     component: () => import("@/views/personalInformation"),
     name: "personalInformation",
-    meta:{show:true,menu:true}
+    children:[
+      {
+        path:"personInfo",
+        component:()=>import("@/views/personalInformation/personInfo"),
+        name:"personInfo",
+        meta:{show:true,menu:true},
+      },
+      {
+        path:"editPersonInfo",
+        component:()=>import("@/views/personalInformation/editPersonInfo"),
+        name:"editPersonInfo",
+        meta:{show:true,menu:true},
+      }
+    ]
   },
   {
     path: "/scoreQuery",

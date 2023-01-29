@@ -38,7 +38,7 @@ export default {
         {
           img: img2,
           title: "信息",
-          path: "/personalInformation",
+          path: "/personalInformation/personInfo",
         },
         {
           img: img3,

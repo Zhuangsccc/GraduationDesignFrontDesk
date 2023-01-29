@@ -20,3 +20,10 @@ export function getStuInfo(data){
         data
     })
 }
+export function updatePersonInfo(data){
+    return request({
+        url:"/stuAdmin/updatePersonInfo",
+        method:"post",
+        data
+    })
+}

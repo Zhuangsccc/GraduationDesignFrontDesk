@@ -2,14 +2,14 @@
   <div id="app">
     <topArea v-show="this.$route.meta.show"></topArea>
     <div class="out-menu-style" >
-      <el-menu router v-show="this.$route.meta.menu" :default-active="activeIndex"  class="el-menu-demo menu-style" mode="horizontal">
-    <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="personalInformation">
+      <el-menu  v-show="this.$route.meta.menu" :default-active="activeIndex"  class="el-menu-demo menu-style" mode="horizontal">
+    <el-menu-item @click="routerJump('homePage')" index="homePage">首页</el-menu-item>
+    <el-menu-item @click="routerJump(`personInfo`)" index="personalInformation/personInfo">
       个人信息
     </el-menu-item>
-    <el-menu-item index="scoreQuery" >成绩查询</el-menu-item>
-    <el-menu-item index="messageBoard">留言板</el-menu-item>
-    <el-menu-item index="affair">事务</el-menu-item>
+    <el-menu-item @click="routerJump(`scoreQuery`)" index="scoreQuery" >成绩查询</el-menu-item>
+    <el-menu-item @click="routerJump(`messageBoard`)" index="messageBoard">留言板</el-menu-item>
+    <el-menu-item @click="routerJump(`affair`)" index="affair">事务</el-menu-item>
   </el-menu>
     </div>
     <transition name="moveCartoon" mode="out-in">
@@ -32,6 +32,11 @@ export default {
       handleChange(val) {
         console.log(val);
       },
+      routerJump(name){
+        if(this.$route.name!==name){
+          this.$router.push({name,})
+        }
+      }
     },
     watch:{
       "$route.name":{
@@ -45,7 +50,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped >
+ #nprogress .bar {
+      background: red !important; 
+    }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

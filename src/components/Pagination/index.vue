@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .pagination-container {
   background: #fff;
   z-index: 500;

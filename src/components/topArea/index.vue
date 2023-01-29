@@ -67,6 +67,7 @@ export default {
 .top-box {
   background: url(../../assets/ptuLogo/top-bg.jpg) no-repeat center center;
   background-size: cover;
+  margin-top: 3px;
   height: 80px;
   width: 100%;
   display: flex;
