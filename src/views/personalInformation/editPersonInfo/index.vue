@@ -49,12 +49,7 @@
           <el-input v-model="tableData.hobby" ></el-input>
         </el-form-item></el-col>
          <el-col :span="20" :offset="1"><el-form-item label="简介:" :label-width="formLabelWidth">
-          <el-input
-           type="textarea"
-           :rows="10"
-           style="font-size:16px"
-           v-model="tableData.selfintroduction">
-</el-input>
+          <el-input type="textarea" :rows="10" style="font-size:16px" v-model="tableData.selfintroduction"> </el-input>
         </el-form-item></el-col>
       </el-row>
       </el-form>
