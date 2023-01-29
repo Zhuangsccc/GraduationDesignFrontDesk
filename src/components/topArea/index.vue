@@ -1,11 +1,12 @@
 <template>
   <div class="top-box">
     <div class="center-box">
-      <img src="@/assets/ptuLogo/logo.png" class="logo-image" />
+      <img @click="goHome" src="@/assets/ptuLogo/logo.png" class="logo-image" />
       <div class="user-box">
         <img src="@/assets/ptuLogo/校训.png" alt="" />
         <el-dropdown>
-          <el-avatar :size="50" :src="image1"> </el-avatar>
+          <el-avatar :size="50" :src="image1" style="cursor: pointer">
+          </el-avatar>
           <span class="el-dropdown-link"> </span>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
             <router-link to="/" style="text-decoration-line: none">
@@ -47,10 +48,15 @@ export default {
     async logout() {
       await this.$store.dispatch("user/logout");
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
-       this.$message({
-          message: '注销成功',
-          type: 'warning'
-        });
+      this.$message({
+        message: "注销成功",
+        type: "warning",
+      });
+    },
+    goHome() {
+      this.$router.push({
+        path: "/",
+      });
     },
   },
   mounted() {},
@@ -69,6 +75,7 @@ export default {
 
 .logo-image {
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .center-box {

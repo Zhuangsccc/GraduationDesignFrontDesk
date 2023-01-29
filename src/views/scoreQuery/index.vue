@@ -81,25 +81,27 @@ export default {
         this.total = result.data.total;
       }
     },
-    getKeyWord(e){
-        this.keyword=e
+    getKeyWord(e) {
+      this.keyword = e;
     },
-    appeal(row){
-        this.$prompt('请输入申诉理由', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-        }).then(() => {
+    appeal() {
+      this.$prompt("请输入申诉理由", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(() => {
           this.$message({
-            type: 'success',
-            message: "申诉成功"
+            type: "success",
+            message: "申诉成功",
           });
-        }).catch(() => {
+        })
+        .catch(() => {
           this.$message({
-            type: 'info',
-            message: '取消'
-          });       
+            type: "info",
+            message: "取消申诉",
+          });
         });
-    }
+    },
   },
   mounted() {
     this.initTableDataByName(

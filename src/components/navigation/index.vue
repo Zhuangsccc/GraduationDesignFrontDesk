@@ -48,14 +48,17 @@ export default {
         {
           img: img4,
           title: "财务",
+          path:"/finance"
         },
         {
           img: img5,
           title: "事务",
+          path:"/affair"
         },
         {
           img: img6,
           title: "留言板",
+          path:"/messageBoard"
         },
         {
           img: img8,

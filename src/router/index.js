@@ -21,6 +21,24 @@ export const constantRoutes = [
     meta:{show:true}
   },
   {
+    path: "/finance",
+    component: () => import("@/views/finance"),
+    name: "finance",
+    meta:{show:true}
+  },
+  {
+    path: "/messageBoard",
+    component: () => import("@/views/messageBoard"),
+    name: "messageBoard",
+    meta:{show:true}
+  },
+  {
+    path: "/affair",
+    component: () => import("@/views/affair"),
+    name: "affair",
+    meta:{show:true}
+  },
+  {
     path:"/login",
     component:()=>import("@/views/login"),
     meta:{show:false}
