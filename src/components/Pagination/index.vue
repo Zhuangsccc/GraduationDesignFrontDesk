@@ -48,7 +48,7 @@ export default {
   position: fixed;
   bottom:20px;
   width: 1160px;
-  height: 50px;
+  height: 40px;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
   -webkit-animation-duration: 1s;

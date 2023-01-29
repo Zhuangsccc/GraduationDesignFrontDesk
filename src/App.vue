@@ -12,7 +12,9 @@
     <el-menu-item index="affair">事务</el-menu-item>
   </el-menu>
     </div>
+    <transition name="moveCartoon" mode="out-in">
     <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -62,4 +64,21 @@ export default {
   display: flex;
   justify-content: center;
 }
+.moveCartoon-enter-active {
+    -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 </style>
