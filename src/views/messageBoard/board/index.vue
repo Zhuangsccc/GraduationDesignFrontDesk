@@ -22,7 +22,7 @@
               <div style="margin-left: 5px">发布于</div>
               <div class="release-time">{{item.release_time}}</div>
             </div>
-            <div class="reply" v-show="item.reply_time">
+            <div class="reply" v-show="item.is_reply">
               <span style="font-weight: 600">管理员:</span>
               <span class="reply-content">{{item.reply_content}}</span>
               <span style="margin: 0 10px">回复于</span>
@@ -53,6 +53,7 @@ export default {
     async getPageInfo(pageIndex, pageSize) {
       this.pageIndex = pageIndex;
       this.pageSize = pageSize;
+      this.initTableData(this.pageIndex,this.pageSize)
     },
     async  initTableData(pageIndex,pageSize){
       let result = await getMessageBoard(pageIndex,pageSize)

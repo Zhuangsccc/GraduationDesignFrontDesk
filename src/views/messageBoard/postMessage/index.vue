@@ -38,6 +38,7 @@ export default {
         content: "",
         state: 1,
         release_time: "",
+        is_reply:0
       },
     };
   },
