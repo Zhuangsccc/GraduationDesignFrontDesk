@@ -8,7 +8,8 @@
       个人信息
     </el-menu-item>
     <el-menu-item @click="routerJump(`scoreQuery`)" index="scoreQuery" >成绩查询</el-menu-item>
-    <el-menu-item @click="routerJump(`messageBoard`)" index="messageBoard">留言板</el-menu-item>
+    <el-menu-item @click="routerJump(`finance`)" index="finance" >财务缴交</el-menu-item>
+    <el-menu-item @click="routerJump(`board`)" index="messageBoard">留言板</el-menu-item>
     <el-menu-item @click="routerJump(`affair`)" index="affair">事务</el-menu-item>
   </el-menu>
     </div>

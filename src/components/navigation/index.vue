@@ -58,7 +58,7 @@ export default {
         {
           img: img6,
           title: "留言板",
-          path:"/messageBoard"
+          path:"/messageBoard/board"
         },
         {
           img: img8,

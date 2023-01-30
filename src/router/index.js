@@ -43,7 +43,20 @@ export const constantRoutes = [
     path: "/messageBoard",
     component: () => import("@/views/messageBoard"),
     name: "messageBoard",
-    meta:{show:true,menu:true}
+    children:[
+      {
+        path:"board",
+        component:()=>import("@/views/messageBoard/board"),
+        name:"board",
+        meta:{show:true,menu:true},
+      },
+      {
+        path:"postMessage",
+        component:()=>import("@/views/messageBoard/postMessage"),
+        name:"postMessage",
+        meta:{show:true,menu:true},
+      }
+    ]
   },
   {
     path: "/affair",
