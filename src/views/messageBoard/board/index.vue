@@ -13,63 +13,83 @@
           >
         </div>
       </div>
-        <div class="info-card infinite-list-wrapper left-box" style="overflow: auto">
-          <el-card class="message-card" style="overflow: auto" v-for="item in tableData" :key="item.id" shadow="hover">
+      <div v-if="tableData.length >= 1">
+        <div
+          class="info-card infinite-list-wrapper left-box"
+          style="overflow: auto"
+        >
+          <el-card
+            class="message-card"
+            style="overflow: auto; border-radius: 18px"
+            v-for="item in tableData"
+            :key="item.id"
+          >
             <div style="padding-top: 10px">
-              <div class="message-content">{{item.content}}</div>
+              <div class="message-content">{{ item.content }}</div>
               <div class="release-status">
-                <div class="publisher">{{item.publisher}}</div>
+                <div class="publisher">{{ item.publisher }}</div>
                 <div style="margin-left: 5px">发布于</div>
-                <div class="release-time">{{item.release_time}}</div>
+                <div class="release-time">{{ item.release_time }}</div>
               </div>
               <div class="reply" v-show="item.is_reply">
                 <span style="font-weight: 600">管理员:</span>
-                <span class="reply-content">{{item.reply_content}}</span>
+                <span class="reply-content">{{ item.reply_content }}</span>
                 <span style="margin: 0 10px">回复于</span>
                 <span class="reply-time" style="font-weight: 600">
-                  {{item.reply_time}}</span
+                  {{ item.reply_time }}</span
                 >
               </div>
             </div>
           </el-card>
+        </div>
+        <Pagination @getPageInfo="getPageInfo" :total="total"> </Pagination>
       </div>
-      <Pagination @getPageInfo="getPageInfo" :total="total"> </Pagination>
+      <div
+        v-else
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        "
+      >
+        <el-empty :image-size="200"></el-empty>
+      </div>
     </el-card>
-
   </div>
 </template>
 
 <script>
-import { getMessageBoard } from "@/api/message"
+import { getMessageBoard } from "@/api/message";
 export default {
   data() {
     return {
       total: 0,
       pageIndex: 0,
       pageSize: 10,
-      tableData:[]
+      tableData: [],
     };
   },
   methods: {
     async getPageInfo(pageIndex, pageSize) {
       this.pageIndex = pageIndex;
       this.pageSize = pageSize;
-      this.initTableData(this.pageIndex,this.pageSize)
+      this.initTableData(this.pageIndex, this.pageSize);
     },
-    async  initTableData(pageIndex,pageSize){
-      let result = await getMessageBoard(pageIndex,pageSize)
-      if(result.code==200){
+    async initTableData(pageIndex, pageSize) {
+      let result = await getMessageBoard(pageIndex, pageSize);
+      if (result.code == 200) {
         this.tableData = result.data.tableData;
         this.total = result.data.total;
       }
     },
-    goPost(){
-      this.$router.push({name:'postMessage'})
-    }
+    goPost() {
+      this.$router.push({ name: "postMessage" });
+    },
   },
-  mounted(){
-    this.initTableData(this.pageIndex,this.pageSize)
-  }
+  mounted() {
+    this.initTableData(this.pageIndex, this.pageSize);
+  },
 };
 </script>
 
@@ -121,7 +141,7 @@ export default {
 }
 .info-card {
   height: 800px;
-  width:100%;
+  width: 100%;
 }
 .infinite-list-wrapper {
   height: calc(100vh - 300px);
@@ -130,5 +150,4 @@ export default {
   display: flex;
   font-size: 16px;
 }
-
 </style>
