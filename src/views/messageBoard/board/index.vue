@@ -13,28 +13,29 @@
           >
         </div>
       </div>
-      <div class="info-card infinite-list-wrapper" style="overflow: auto">
-        <el-card class="message-card" style="overflow: auto" v-for="item in tableData" :key="item.id" shadow="hover">
-          <div style="padding-top: 10px">
-            <div class="message-content">{{item.content}}</div>
-            <div class="release-status">
-              <div class="publisher">{{item.publisher}}</div>
-              <div style="margin-left: 5px">发布于</div>
-              <div class="release-time">{{item.release_time}}</div>
+        <div class="info-card infinite-list-wrapper left-box" style="overflow: auto">
+          <el-card class="message-card" style="overflow: auto" v-for="item in tableData" :key="item.id" shadow="hover">
+            <div style="padding-top: 10px">
+              <div class="message-content">{{item.content}}</div>
+              <div class="release-status">
+                <div class="publisher">{{item.publisher}}</div>
+                <div style="margin-left: 5px">发布于</div>
+                <div class="release-time">{{item.release_time}}</div>
+              </div>
+              <div class="reply" v-show="item.is_reply">
+                <span style="font-weight: 600">管理员:</span>
+                <span class="reply-content">{{item.reply_content}}</span>
+                <span style="margin: 0 10px">回复于</span>
+                <span class="reply-time" style="font-weight: 600">
+                  {{item.reply_time}}</span
+                >
+              </div>
             </div>
-            <div class="reply" v-show="item.is_reply">
-              <span style="font-weight: 600">管理员:</span>
-              <span class="reply-content">{{item.reply_content}}</span>
-              <span style="margin: 0 10px">回复于</span>
-              <span class="reply-time" style="font-weight: 600">
-                {{item.reply_time}}</span
-              >
-            </div>
-          </div>
-        </el-card>
+          </el-card>
       </div>
+      <Pagination @getPageInfo="getPageInfo" :total="total"> </Pagination>
     </el-card>
-    <Pagination @getPageInfo="getPageInfo" :total="total"> </Pagination>
+
   </div>
 </template>
 
@@ -93,7 +94,7 @@ export default {
   margin-left: 20px;
 }
 .message-card {
-  width: 75%;
+  width: 95%;
   min-height: 130px;
   margin-top: 10px;
   display: flex;
@@ -120,6 +121,7 @@ export default {
 }
 .info-card {
   height: 800px;
+  width:100%;
 }
 .infinite-list-wrapper {
   height: calc(100vh - 300px);
@@ -128,4 +130,5 @@ export default {
   display: flex;
   font-size: 16px;
 }
+
 </style>

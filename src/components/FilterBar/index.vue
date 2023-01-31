@@ -47,7 +47,7 @@ export default {
 .filter-box {
   height: 70px;
   padding-right: 550px;
-  width: 60%;
+  width: 50%;
 }
 .title-style{
   font-size: 20px;
