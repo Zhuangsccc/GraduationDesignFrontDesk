@@ -45,8 +45,7 @@ export default {
   methods: {
     async okHandler() {
       if (this.form.content !== "") {
-        const t = new Date();
-        this.form.release_time = getMoment(t);
+        this.form.release_time = getMoment(new Date());
         let result = await postMessage(this.form);
         if (result.code == 200) {
           this.$message({
