@@ -46,10 +46,11 @@
           <el-table-column label="操作" align="center">
             <template slot-scope="{ row }">
               <el-link
-                type="danger"
+                type="primary"
                 :underline="false"
                 style="margin-left: 10px"
-                >删除</el-link
+                @click="showImg(row)"
+                >缴费</el-link
               >
             </template>
           </el-table-column>
@@ -57,25 +58,38 @@
       </div>
       <Pagination @getPageInfo="getPageInfo" :total="total"></Pagination>
     </el-card>
+    <el-dialog
+  :visible.sync="dialogVisible"
+  width="30%">
+  <span class="price-style">金额:{{chose_price}}</span>
+  <img :src="big_image_url" class="big-image" alt="">
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+</el-dialog>
   </div>
 </template>
 
 <script>
-import {getFinancialCharges} from "@/api/finance"
+import { getFinancialCharges } from "@/api/finance";
 export default {
-  data(){
-    var moren_img = require("@/assets/暂无图片.png")
-    return{
+  data() {
+    var moren_img = require("@/assets/暂无图片.png");
+    return {
       moren_img,
       tableData: [],
-      total:0,
-      keyword:"",
+      total: 0,
+      keyword: "",
       pageIndex: 0,
       pageSize: 10,
-    }
+      dialogVisible:false,
+      big_image_url:"",
+      chose_price:0
+    };
   },
-  methods:{
-  getKeyWord(e) {
+  methods: {
+    getKeyWord(e) {
       this.keyword = e;
     },
     async getPageInfo(pageIndex, pageSize) {
@@ -92,11 +106,16 @@ export default {
         }
       }
     },
+    showImg(row){
+      this.dialogVisible=true
+      this.big_image_url=row.image_url
+      this.chose_price=row.price
+    }
   },
-  mounted(){
-    this.initTableData()
-  }
-}
+  mounted() {
+    this.initTableData();
+  },
+};
 </script>
 
 <style scoped>
@@ -112,7 +131,16 @@ export default {
   border-radius: 18px;
   margin-top: 10px;
 }
-.finan-img{
-    height: 120px;
-  }
+.finan-img {
+  height: 120px;
+}
+.big-image{
+  width: 100%;
+  min-height: 600px;
+  min-width: 400px;
+}
+.price-style{
+  font-size: 20px;
+  font-weight: 600;
+}
 </style>

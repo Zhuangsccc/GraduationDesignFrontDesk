@@ -34,6 +34,9 @@ const actions = {
       commit("SET_STU",res.stuName)
       setToken(res.token)
       setStu(res.stuName)
+      return new Promise((resolve, reject) => {
+        resolve(res.code)
+      })
     }
   },
   // user logout

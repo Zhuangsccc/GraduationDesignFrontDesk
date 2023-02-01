@@ -1,21 +1,21 @@
 <template>
   <div class="login-box">
     <div class="box-left">
-      <img src="@/assets/登录图.png" alt="" />
+      <img src="@/assets/login.png" alt="" />
     </div>
     <div class="box-right">
       <div class="inside-box" v-if="!isRegister">
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
-          <svg-icon icon-class="在线教育" class="svg" />
-          <header><i class="iconfont">学生系统</i></header>
+          <img :src="img1" alt="">
+          <header><i class="iconfont" style="color:black">学生系统</i></header>
         </div>
         <el-form
           ref="loginForm"
           :model="loginForm"
           :rules="loginRules"
-          style="margin-top: 20px"
+          style="margin-top: 20px "
         >
           <el-form-item label="">
             <el-input
@@ -59,7 +59,7 @@
             @click.native.prevent="handleLogin"
             >登录</el-button
           >
-          <div style="width: 100%; display: flex; justify-content: center">
+          <div style="width: 100%; display: flex; justify-content: center;margin-top:10px">
             <el-link @click="toRegister">还没有账号？快去注册一个</el-link>
           </div>
         </el-form>
@@ -170,10 +170,12 @@ export default {
         callback();
       }
     };
+    const img1 = require("@/assets/Lo.png")
     return {
+      img1,
       loginForm: {
-        username: "admin",
-        password: "123456",
+        username: "",
+        password: "",
       },
       registerForm: {
         username: "",
@@ -237,13 +239,16 @@ export default {
           this.loading = true;
           this.$store
             .dispatch("user/login", this.loginForm)
-            .then(() => {
-              this.$router.push({ path: "/" });
-              this.$message({
-                message: "登陆成功！！",
-                type: "success",
-              });
-              this.loading = false;
+            .then((res) => {
+               this.loading = false;
+              if(res==200){
+                this.$router.push({ path: "/" });
+                 this.loading = false;
+                 this.$message({
+                  message:"登陆成功！！",
+                  type:"success"
+                 })
+              }
             })
             .catch(() => {
               this.loading = false;
@@ -292,6 +297,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@font-face {
+  font-family: "仓耳渔阳体 W01";
+  font-weight: 400;
+  src: url("//at.alicdn.com/wf/webfont/OwzqFAbuXJtW/1GlofK69wVDo4DvMnr2F4.woff2")
+      format("woff2"),
+    url("//at.alicdn.com/wf/webfont/OwzqFAbuXJtW/UcEZK3vp8TsDLhnGTNUe4.woff")
+      format("woff");
+  font-display: swap;
+}
+
+.iconfont {
+  font-family: "仓耳渔阳体 W01" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2rem;
+}
+
 .login-box {
   position: absolute;
   top: 0;
@@ -311,8 +335,8 @@ export default {
   align-items: center;
 }
 .box-left img {
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
 }
 
 .box-right {
@@ -324,9 +348,9 @@ export default {
 }
 
 .inside-box {
-  padding-top: 80px;
-  width: 500px;
-  height: 500px;
+  padding-top: 70px;
+  width: 400px;
+  height: 400px;
 }
 
 .svg-container {
@@ -337,34 +361,10 @@ export default {
   display: inline-block;
 }
 
-@font-face {
-  font-family: "仓耳渔阳体 W01";
-  font-weight: 400;
-  src: url("//at.alicdn.com/wf/webfont/OwzqFAbuXJtW/1GlofK69wVDo4DvMnr2F4.woff2")
-      format("woff2"),
-    url("//at.alicdn.com/wf/webfont/OwzqFAbuXJtW/UcEZK3vp8TsDLhnGTNUe4.woff")
-      format("woff");
-  font-display: swap;
-}
-
-.iconfont {
-  font-family: "仓耳渔阳体 W01" !important;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 2.5rem;
-}
-
-.svg {
-  height: 50px;
-  width: 50px;
-}
-
 .register-box {
   padding-top: 80px;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 }
 
 .register-tag {

@@ -22,12 +22,12 @@
 import Swiper from "swiper";
 export default {
   data() {
-    var img1 = require("@/assets/Ptu/莆田学院1.jpg");
-    var img2 = require("@/assets/Ptu/莆田学院2.jpg");
-    var img3 = require("@/assets/Ptu/莆田学院3.jpg");
-    var img4 = require("@/assets/Ptu/莆田学院4.jpg");
-    var img5 = require("@/assets/Ptu/莆田学院5.jpg");
-    var img6 = require("@/assets/Ptu/莆田学院6.jpg");
+    var img1 = require("@/assets/Ptu/1.png");
+    var img2 = require("@/assets/Ptu/2.png");
+    var img3 = require("@/assets/Ptu/3.png");
+    var img4 = require("@/assets/Ptu/4.png");
+    var img5 = require("@/assets/Ptu/5.png");
+    var img6 = require("@/assets/Ptu/6.png");
     return {
       image_list: [img1, img2, img3, img4, img5, img6],
     };
