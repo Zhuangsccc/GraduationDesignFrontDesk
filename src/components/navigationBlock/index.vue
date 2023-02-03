@@ -17,7 +17,7 @@
       </div>
     </router-link>
     <a
-      href="http://localhost:9528/#/mydashboard"
+      href="https://back.zsc.world/#/mydashboard"
       style="text-decoration-line: none"
       v-else
     >

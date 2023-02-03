@@ -210,10 +210,7 @@ export default {
       showIcon: 0,
       //是否处于注册状态
       isRegister: false,
-      //两次密码是否一致
-      isPass: true,
-      //第二次输入的密码
-      secondPassword: "",
+
     };
   },
   watch: {
