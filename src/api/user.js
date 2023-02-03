@@ -27,3 +27,10 @@ export function updatePersonInfo(data){
         data
     })
 }
+export function updateUserPW(data){
+    return request({
+        url:"stuAdmin/updateUserPW",
+        method:"post",
+        data
+    })
+}

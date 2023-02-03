@@ -96,5 +96,6 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 1000px;
+  text-align: center;
 }
 </style>

@@ -1,4 +1,4 @@
-import { getToken, setToken, removeToken, getName, removeName,setStu,getStu,removeStu } from '@/utils/auth'
+import { getToken, setToken, removeToken, getName, removeName,setStu,getStu,removeStu, setName } from '@/utils/auth'
 import { login } from "@/api/user"
 import { resetRouter } from '@/router'
 const getDefaultState = () => {
@@ -34,6 +34,7 @@ const actions = {
       commit("SET_STU",res.stuName)
       setToken(res.token)
       setStu(res.stuName)
+      setName(username)
       return new Promise((resolve, reject) => {
         resolve(res.code)
       })
@@ -41,7 +42,7 @@ const actions = {
   },
   // user logout
   logout({ commit, state }) {
-    removeToken() // must remove  token  first
+    removeToken() 
     removeName()
     removeStu()
     resetRouter()

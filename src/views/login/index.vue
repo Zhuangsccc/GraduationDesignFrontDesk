@@ -78,7 +78,7 @@
           :rules="loginRules"
           style="margin-top: 20px"
         >
-          <el-form-item>
+          <el-form-item prop="stu">
             <el-input
               ref="username"
               v-model="registerForm.username"
@@ -107,11 +107,11 @@
             ></el-input>
             <!-- el-icon-view -->
           </el-form-item>
-          <el-form-item style="margin-bottom: 5px">
+          <el-form-item style="margin-bottom: 5px" prop="checkpassword">
             <el-input
               prefix-icon="el-icon-lock"
               :key="passwordType"
-              v-model="secondPassword"
+              v-model="registerForm.checkpassword"
               :type="passwordType"
               placeholder="请输入密码"
               name="password"
@@ -121,9 +121,7 @@
               @focus="showIcon = 1"
               @blur="showIcon = 0"
             ></el-input>
-            <span v-show="!isPass" class="register-tag" style="color: #c00000"
-              >两次输入的密码不一致</span
-            >
+
             <!-- el-icon-view -->
           </el-form-item>
           <el-form-item style="margin-top:20px" prop="stu">
@@ -170,6 +168,15 @@ export default {
         callback();
       }
     };
+    var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.registerForm.password) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
     const img1 = require("@/assets/Lo.png")
     return {
       img1,
@@ -180,6 +187,7 @@ export default {
       registerForm: {
         username: "",
         password: "",
+        checkpassword:'',
         stu:""
       },
       loginRules: {
@@ -188,6 +196,9 @@ export default {
         ],
         password: [
           { required: true, trigger: "blur", validator: validatePassword },
+        ],
+        checkpassword:[
+          {required:true,trigger:'blur',validator:validatePass2}
         ],
         stu:[
           { required: true, trigger: "blur",message:"请输入学生名"},
@@ -211,15 +222,6 @@ export default {
         this.redirect = route.query && route.query.redirect;
       },
       immediate: true,
-    },
-    secondPassword: {
-      handler(newValue) {
-        if (newValue !== this.registerForm.password) {
-          this.isPass = false;
-        } else {
-          this.isPass = true;
-        }
-      },
     },
   },
   methods: {
@@ -260,37 +262,47 @@ export default {
       });
     },
     handleRegister() {
-      if (this.isPass) {
         this.$refs.registerForm.validate(async (valid) => {
           if (valid) {
             this.loading = true;
+            delete this.registerForm.checkpassword
             let result = await regUser(this.registerForm);
             if (result.code == 200) {
               this.isRegister = false;
               this.loginForm = {
                 username: "",
                 password: "",
-                stu:""
               };
               this.$message({
                 message: "注册成功！",
                 type: "success",
               });
             }
+            this.registerForm.checkpassword=this.registerForm.password
+            if(result.msg=='该学生已绑定'){
+              this.registerForm.stu=''
+            }
             this.loading = false;
           }
         });
-      }
     },
     toRegister() {
       this.isRegister = true;
       this.registerForm = {
         username: "",
         password: "",
+        checkpassword:'',
+        stu:""
       };
+      this.$nextTick(()=>{
+        this.$refs.registerForm.clearValidate()
+      })
     },
     backToLogin() {
       this.isRegister = false;
+      this.$nextTick(()=>{
+        this.$refs.loginForm.clearValidate()
+      })
     },
   },
 };
